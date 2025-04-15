@@ -1,42 +1,172 @@
+/* globals.css - Versão Pastel para Hamburgueria */
+
+/* Import da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Pacifico&display=swap');
+
+/* Variáveis de cor */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --creme: #FFF8F0;
+  --creme-claro: #FFFDF5;
+  --coral: #FF9A8B;
+  --coral-claro: #FFD1C6;
+  --laranja: #FFB88C;
+  --amarelo: #FFD166;
+  --marrom: #8B7D6B;
+  --marrom-escuro: #5E503F;
+  --textura: url('data:image/svg+xml;utf8,<svg opacity="0.03" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="3" fill="%23FF9A8B"/><circle cx="50" cy="50" r="3" fill="%23FFB88C"/><circle cx="80" cy="80" r="3" fill="%23FFD166"/></svg>');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
+/* Reset e Estilos Base */
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
+  background-color: var(--creme);
+  background-image: 
+    linear-gradient(to bottom, #ffffff80 0%, transparent 20%),
+    var(--textura);
+  font-family: 'Comic Neue', cursive;
   margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: var(--marrom-escuro);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Cabeçalho */
+.header {
+  background-color: var(--coral);
+  color: var(--creme);
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(255, 154, 139, 0.3);
+  position: relative;
+  z-index: 10;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--coral), var(--laranja), var(--amarelo));
+}
+
+/* Itens do Menu */
+.menu-item {
+  background-color: var(--creme-claro);
+  color: var(--marrom-escuro);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 154, 139, 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--coral-claro);
+}
+
+.menu-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 154, 139, 0.25);
+  background-color: white;
+}
+
+/* Seção Sobre */
+.about-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--creme) 0%, white 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 184, 140, 0.1);
+  border-radius: 50%;
+}
+
+.about-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--coral);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  position: relative;
+  display: inline-block;
+}
+
+.about-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--coral), var(--laranja));
+  border-radius: 3px;
+}
+
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--marrom);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* Rodapé */
+.footer {
+  background: linear-gradient(135deg, var(--laranja) 0%, var(--coral) 100%);
+  color: var(--creme);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--amarelo), var(--laranja), var(--coral));
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 1.8rem;
   }
+  
+  .menu-item {
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .footer {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Efeitos Especiais */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.menu-item:hover {
+  animation: float 2s ease-in-out infinite;
 }

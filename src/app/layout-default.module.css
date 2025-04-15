@@ -1,0 +1,61 @@
+/* layout.module.css */
+
+/* Container principal */
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #FFF8F0; /* Creme pastel */
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(255, 214, 102, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 80% 70%, rgba(255, 154, 139, 0.1) 0%, transparent 20%);
+    position: relative;
+  }
+  
+  /* Efeito de borda decorativa */
+  .layoutContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(
+      90deg,
+      #FF9A8B 0%,   /* Coral pastel */
+      #FFB88C 33%,  /* Laranja pastel */
+      #FFD166 66%,  /* Amarelo pastel */
+      #FF9A8B 100%  /* Coral pastel */
+    );
+    z-index: 20;
+  }
+  
+  /* Conteúdo principal */
+  .mainContent {
+    flex: 1;
+    padding: 2rem 0;
+    position: relative;
+  }
+  
+  /* Container para centralização */
+  .pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Efeitos de transição */
+  .layoutContainer {
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .mainContent {
+      padding: 1rem 0;
+    }
+    
+    .pageContainer {
+      padding: 0 0.5rem;
+    }
+  }

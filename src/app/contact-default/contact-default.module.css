@@ -1,0 +1,145 @@
+/* Contact.module.css - Estilo Aconchegante */
+
+.contactSection {
+    padding: 5rem 1rem;
+    background: linear-gradient(180deg, #FFFDF5 0%, #FFF8F0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Bolhas decorativas */
+  .contactSection::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 154, 139, 0.08);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  
+  .contactContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .contactTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FF9A8B; /* Coral pastel */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+  }
+  
+  .contactSubtitle {
+    font-size: 1.25rem;
+    color: #8B7D6B; /* Marrom pastel */
+    margin-bottom: 3rem;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .contactForm {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(255, 154, 139, 0.1);
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .formLabel {
+    display: block;
+    color: #5E503F; /* Marrom escuro pastel */
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #FFD1C6; /* Borda coral claro */
+    border-radius: 8px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #FFFDF5; /* Fundo creme claro */
+  }
+  
+  .formInput:focus,
+  .formTextarea:focus {
+    outline: none;
+    border-color: #FF9A8B; /* Coral pastel */
+    box-shadow: 0 0 0 3px rgba(255, 154, 139, 0.2);
+  }
+  
+  .formTextarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  .submitButton {
+    background-color: #FF9A8B; /* Coral pastel */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(255, 154, 139, 0.2);
+  }
+  
+  .submitButton:hover {
+    background-color: #FFB88C; /* Laranja pastel */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 154, 139, 0.3);
+  }
+  
+  .contactInfo {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .infoItem {
+    display: inline-block;
+    margin: 0 1.5rem;
+    color: #5E503F; /* Marrom escuro pastel */
+  }
+  
+  .infoIcon {
+    color: #FF9A8B; /* Coral pastel */
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .contactSection {
+      padding: 3rem 1rem;
+    }
+    
+    .contactTitle {
+      font-size: 2rem;
+    }
+    
+    .contactForm {
+      padding: 1.5rem;
+    }
+    
+    .infoItem {
+      display: block;
+      margin: 1rem 0;
+    }
+  }

@@ -1,0 +1,122 @@
+/* About.module.css - Estilo Pastel para Hamburgueria */
+
+.aboutSection {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #FFFDF5 0%, #FFF8F0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bolhas decorativas */
+.aboutSection::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -30px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 154, 139, 0.08);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.aboutSection::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -50px;
+  width: 250px;
+  height: 250px;
+  background-color: rgba(255, 184, 140, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.aboutTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FF9A8B; /* Coral pastel */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Sublinhado decorativo */
+.aboutTitle::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #FF9A8B, #FFB88C);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.aboutContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutText {
+  color: #5E503F; /* Marrom pastel */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Container de destaques */
+.aboutHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.highlightItem {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255, 154, 139, 0.1);
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.highlightItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(255, 154, 139, 0.15);
+}
+
+.highlightIcon {
+  font-size: 2rem;
+  color: #FF9A8B;
+  margin-bottom: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .aboutSection {
+    padding: 3rem 1rem;
+  }
+  
+  .aboutTitle {
+    font-size: 2rem;
+  }
+  
+  .aboutText {
+    font-size: 1rem;
+  }
+  
+  .highlightItem {
+    min-width: 100%;
+  }
+}

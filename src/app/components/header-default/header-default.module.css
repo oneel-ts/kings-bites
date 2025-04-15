@@ -1,0 +1,57 @@
+/* header-default.module.css */
+.header {
+  width: 100%;
+  background-color: #FFF8F0; /* Creme pastel */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra mais suave */
+  padding: 1rem 0;
+  border-bottom: 2px solid #FF9A8B; /* Vermelho pastel */
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF6B6B; /* Vermelho pastel mais vibrante */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  font-family: 'Comic Neue', cursive; /* Fonte descontraída */
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: #5E503F; /* Marrom pastel */
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  border-radius: 20px; /* Bordas mais arredondadas */
+}
+
+.navItem a:hover {
+  color: #FFF8F0;
+  background-color: #FFB88C; /* Laranja pastel */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 155, 139, 0.2);
+}
+
+/* Efeito para item ativo */
+.navItem a[aria-current="page"] {
+  color: #FFF8F0;
+  background-color: #FF9A8B; /* Vermelho pastel */
+  box-shadow: 0 4px 8px rgba(255, 154, 139, 0.3);
+}

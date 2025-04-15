@@ -1,0 +1,68 @@
+/* Menu.module.css */
+.menuSection {
+  padding: 4rem 1rem;
+  background-color: #FFF8F0; /* Fundo creme pastel */
+  min-height: 100vh;
+}
+
+.menuTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #FF9A8B; /* Coral pastel */
+  font-family: 'Comic Neue', cursive;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 2rem;
+}
+
+.menuTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #FF9A8B, #FFD1C6, #FF9A8B);
+  border-radius: 3px;
+}
+
+.menuGrid {
+  display: grid;
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .menuGrid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: 2rem;
+  }
+  
+  .menuTitle {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+  }
+}
+
+/* Efeitos especiais */
+.menuSection {
+  background-image: radial-gradient(circle at 10% 20%, #FFF5F3 0%, transparent 20%),
+                   radial-gradient(circle at 90% 80%, #FFF5F3 0%, transparent 20%);
+  background-size: 300px 300px;
+  background-repeat: no-repeat;
+}
+
+.menuTitle:hover::after {
+  animation: underlineGrow 0.5s ease forwards;
+}
+
+@keyframes underlineGrow {
+  0% { width: 0; left: 50%; }
+  100% { width: 100%; left: 0; }
+}

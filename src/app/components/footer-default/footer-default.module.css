@@ -1,0 +1,21 @@
+/* footer-default.module.css */
+.footer {
+  background-color: #FFF8F0; /* Creme suave - substitui o cinza */
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 1.5rem 0;
+  margin-top: 2.5rem;
+  border-top: 1px solid #FFD166; /* Borda em amarelo mostarda pastel */
+  width: 100%;
+}
+
+.copyright {
+  margin: 0;
+  color: #8B7D6B; /* Marrom pastel suave */
+}
+
+/* Efeitos adicionais para harmonizar */
+.footer:hover {
+  background-color: #F9F5FF; /* Transição suave para lilás claro */
+  transition: background-color 0.3s ease;
+}

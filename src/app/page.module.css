@@ -1,168 +1,132 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+/* Home.module.css - Estilo Pastel para Hamburgueria */
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+.homeSection {
+  text-align: center;
+  padding: 5rem 1rem;
+  background: linear-gradient(180deg, #FFF8F0 0%, #FFFDF5 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
+/* Bolhas decorativas */
+.homeSection::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 154, 139, 0.08);
+  border-radius: 50%;
+  z-index: 0;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+.homeSection::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 184, 140, 0.05);
+  border-radius: 50%;
+  z-index: 0;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+.homeTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FF9A8B; /* Coral pastel */
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+  animation: fadeInDown 1s ease;
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
+.homeSubtitle {
+  font-size: 1.25rem;
+  color: #8B7D6B; /* Marrom pastel */
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+  line-height: 1.6;
 }
 
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
+.homeBanner {
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(255, 154, 139, 0.15);
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 90%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border: 8px solid white;
+  transform: perspective(1000px) rotateX(5deg);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.homeBanner:hover {
+  transform: perspective(1000px) rotateX(0deg) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 154, 139, 0.25);
+}
+
+/* Botão CTA */
+.homeCta {
+  display: inline-block;
+  background-color: #FF9A8B;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
   font-weight: 600;
+  margin-top: 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(255, 154, 139, 0.2);
 }
 
-.ctas {
-  display: flex;
-  gap: 16px;
+.homeCta:hover {
+  background-color: #FFB88C;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(255, 154, 139, 0.3);
 }
 
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
-}
-
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+/* Animação */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
+/* Responsividade */
+@media (max-width: 768px) {
+  .homeSection {
+    padding: 3rem 1rem;
   }
-
-  .main {
-    align-items: center;
+  
+  .homeTitle {
+    font-size: 2.2rem;
   }
-
-  .main ol {
-    text-align: center;
+  
+  .homeSubtitle {
+    font-size: 1.1rem;
   }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+  
+  .homeBanner {
+    width: 95%;
+    border-width: 4px;
   }
 }
