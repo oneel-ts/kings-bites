@@ -1,4 +1,4 @@
-/* globals.css - Versão Pastel para Hamburgueria */
+/* globals.module.css - Versão Pastel para Hamburgueria */
 
 /* Import da fonte */
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Pacifico&display=swap');
@@ -19,7 +19,7 @@
 /* Reset e Estilos Base */
 body {
   background-color: var(--creme);
-  background-image: 
+  background-image:
     linear-gradient(to bottom, #ffffff80 0%, transparent 20%),
     var(--textura);
   font-family: 'Comic Neue', cursive;
@@ -47,6 +47,47 @@ body {
   width: 100%;
   height: 3px;
   background: linear-gradient(90deg, var(--coral), var(--laranja), var(--amarelo));
+}
+
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #FFF8F0; /* Creme pastel */
+  background-image:
+          radial-gradient(circle at 20% 30%, rgba(255, 214, 102, 0.1) 0%, transparent 20%),
+          radial-gradient(circle at 80% 70%, rgba(255, 154, 139, 0.1) 0%, transparent 20%);
+  position: relative;
+}
+
+/* Efeito de borda decorativa */
+.layoutContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(
+          90deg,
+          #FF9A8B 0%,   /* Coral pastel */
+          #FFB88C 33%,  /* Laranja pastel */
+          #FFD166 66%,  /* Amarelo pastel */
+          #FF9A8B 100%  /* Coral pastel */
+  );
+  z-index: 20;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.pageContainer {
+  /*max-width: 1200px;*/
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Itens do Menu */
@@ -149,12 +190,12 @@ body {
   .about-title {
     font-size: 1.8rem;
   }
-  
+
   .menu-item {
     padding: 1.2rem;
     margin-bottom: 1.2rem;
   }
-  
+
   .footer {
     padding: 2rem 1rem;
   }

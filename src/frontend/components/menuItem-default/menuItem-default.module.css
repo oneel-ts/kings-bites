@@ -38,17 +38,6 @@
   font-style: italic;
 }
 
-.itemPrice {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #FF9A8B; /* Coral pastel */
-  margin-left: 1rem;
-  white-space: nowrap;
-  background-color: #FFF5F3; /* Fundo rosado */
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  box-shadow: inset 0 0 0 1px #FFD1C6; /* Borda interna sutil */
-}
 /* Adicione esta classe */
 .special {
   background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
@@ -66,4 +55,23 @@
   padding: 2px 8px;
   border-radius: 10px;
   font-size: 0.7rem;
+}
+
+.containerFood {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 8px;
+}
+
+.itemPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FF9A8B; /* Coral pastel */
+  white-space: nowrap;
+  background-color: #FFF5F3; /* Fundo rosado */
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1px #FFD1C6; /* Borda interna sutil */
 }
