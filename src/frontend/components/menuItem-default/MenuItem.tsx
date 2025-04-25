@@ -22,7 +22,7 @@ export default function MenuItem({name, description, ProductImage, price, isSpec
                 <p className={styles.itemDescription}>{description}</p>
             </div>
             <div className={styles.containerFood}>
-                <Image style={{borderRadius: "16px"}} width={110} height={100} src={ProductImage} alt={""}/>
+                <Image className={styles.img} width={110} height={100} src={ProductImage} alt={""}/>
                 <span className={styles.itemPrice}>{price}</span>
             </div>
         </div>

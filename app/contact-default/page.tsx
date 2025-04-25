@@ -4,28 +4,28 @@ export default function Contact() {
   return (
     <section className={styles.contactSection}>
       <div className={styles.contactContainer}>
-        <h2 className={styles.contactTitle}>Fale Conosco</h2>
+        <h2 className={styles.contactTitle}>Contact Us</h2>
         <p className={styles.contactSubtitle}>
-          Tem alguma dúvida ou sugestão? Envie uma mensagem que retornaremos o mais breve possível!
+        Have any questions or suggestions? Send us a message and we will get back to you as soon as possible!
         </p>
         
         <form className={styles.contactForm}>
           <div className={styles.formGroup}>
-            <label htmlFor="name" className={styles.formLabel}>Seu Nome</label>
+            <label htmlFor="name" className={styles.formLabel}>Your Name</label>
             <input type="text" id="name" className={styles.formInput} required />
           </div>
           
           <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.formLabel}>Seu Email</label>
+            <label htmlFor="email" className={styles.formLabel}>Your Email</label>
             <input type="email" id="email" className={styles.formInput} required />
           </div>
           
           <div className={styles.formGroup}>
-            <label htmlFor="message" className={styles.formLabel}>Sua Mensagem</label>
+            <label htmlFor="message" className={styles.formLabel}>Your Message</label>
             <textarea id="message" className={styles.formTextarea} required></textarea>
           </div>
           
-          <button type="submit" className={styles.submitButton}>Enviar Mensagem</button>
+          <button type="submit" className={styles.submitButton}>Send Message</button>
         </form>
         
         <div className={styles.contactInfo}>

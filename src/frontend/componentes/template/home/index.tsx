@@ -6,17 +6,38 @@ export default function Home () {
     return (
         <Fragment>
             <section className={styles.homeSection}>
-                <h1 className={styles.homeTitle}>King Bites</h1>
-                <p className={styles.homeSubtitle}>Sabores incríveis, feitos com carinho e ingredientes frescos</p>
-
+                <h1 className={styles.homeTitle}>Welcome to King Bites</h1>
+                <p className={styles.homeSubtitle}><h2>At King Bites, every flavor is treated like royalty.</h2> </p>
+                <p>
+                    Whether it’s a juicy burger, a crispy snack, or any other delight from our menu
+                    
+                </p>
+                <p>
+                    here you’ll find an explosion of flavors in a cozy and feel-good atmosphere.
+                </p>
+                <p>
+                    <strong>
+                    Make yourself at home, pick your favorite, and enjoy every bite.
+                    </strong>        
+                </p>
+                <p>
+                    <h2>
+                        <strong>
+                        👑 King Bites. Where flavor is truly king.
+                        </strong>
+                    </h2>
+                </p>
                 <img
-                    src="/assets/banner.jpg"
+                    src="/assets/frenteR.jpeg"
                     alt="Hambúrguer artesanal King Bites"
                     className={styles.homeBanner}
                 />
 
                 <Link href="/menu" className={styles.homeCta}>
-                    Ver Cardápio Completo
+                See full menu
+                </Link>
+                <Link href="https://www.instagram.com/kingbites2023/" className={styles.homeCta}>
+                        instagram
                 </Link>
             </section>
         </Fragment>
