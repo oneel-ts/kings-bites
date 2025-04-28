@@ -52,6 +52,13 @@ const items = [
     description: "Grilled fresh chicken, mozzarella cheese, lettuce, tomato, corn, potato sticks, and mayonnaise.", 
     ProductImage: chicken,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
+  }, 
+  {
+    name: "X-KingBites Chicken", 
+    price: "$13,99", 
+    description: "Hamburger, egg, Bacon, ham, mozzarella cheese, lettuce, tomato, corn, potato sticks and chicken.", 
+    ProductImage: chicken,
+    link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Special Combo One", 
@@ -63,91 +70,91 @@ const items = [
   {
     name: "X-Egg", 
     price: "$14,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Egg, Bacon, Ham, Mozzarella Cheese, Lettuce, Tomato, corn, Potato sticks, and Mayonnaise.", 
     ProductImage: egg,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "X-Bacon", 
     price: "$14,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Egg, Bacon, Ham, Mozzarella Cheese, Lettuce, Tomato, corn, Potato sticks, and Mayonnaise.", 
     ProductImage: bacon,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "X-Tudo BURGER", 
     price: "$17,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Hamburger, Egg, Bacon, Ham, Mozzarella Cheese, Lettuce, Tomato, corn, Potato sticks, and Mayonnaise. Perfectly come together for the flavors of a Brazilian Burger", 
     ProductImage: tudo,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
-    name: "Bacon Cheddar Fries", 
+    name: "Fries bacon cheddar", 
     price: "$13,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Crispy fries topped with melted cheddar cheese and crumbled bacon.", 
     ProductImage: chedar,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Little Sausage Roll", 
     price: "$5,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Brazilian-style sausage rolls available in assorted quantities: 15, 25, 50, or 100", 
     ProductImage: enroladinho,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Cheesy Corn Fritters", 
     price: "$4,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Brazilian cheese balls infused with corn. Available in quantities of 15, 25, 50, or 100", 
     ProductImage: queijo,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Coxinha", 
     price: "$4,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Brazilian-style chicken dumplings, options for various quantities: 15, 25, 50, or 100", 
     ProductImage: coxinha,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Coke Can", 
     price: "$2,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Carbonated soft drink with a sweet, cola flavor.", 
     ProductImage: coke,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Guarana Can", 
     price: "$2,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "A refreshing Brazilian soda made from guarana berries, offering a unique and slightly sweet flavor.", 
     ProductImage: guarana,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
-    name: "Bottle of Coca-Cola", 
+    name: "Coke bottle", 
     price: "$5,50", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Refreshing carbonated beverage with a bold cola taste. 2L", 
     ProductImage: gcoke,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
-    name: "Bottle of Guarana", 
+    name: "Guarana Bottle", 
     price: "$5,50", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Sparkling beverage made from Brazilian guaraná berries. 2L", 
     ProductImage: gguarana,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
-    name: "Bottle of water", 
+    name: "Water Bottle", 
     price: "$1,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "Pure, refreshing hydration in a bottle.", 
     ProductImage: agua,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   },
   {
     name: "Chicken wings and fries", 
     price: "$15,99", 
-    description: "Fried parsnips, french fries, sautéed Calabrian sausage, chicken wings, fried bananas, fresh tomatoes, crispy bacon, and melted cheddar cheese.", 
+    description: "6 Crispy chicken wings paired with golden fries.", 
     ProductImage: frango,
     link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
   }
