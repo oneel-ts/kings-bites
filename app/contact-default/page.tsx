@@ -31,17 +31,17 @@ export default function Contact() {
         <div className={styles.contactInfo}>
           <div className={styles.infoItem}>
             <div className={styles.infoIcon}>📞</div>
-            <p>(11) 98765-4321</p>
+            <p>(781) 475-7872</p>
           </div>
           
           <div className={styles.infoItem}>
             <div className={styles.infoIcon}>✉️</div>
-            <p>contato@kingbites.com</p>
+            <p>Kingbites2023</p>
           </div>
           
           <div className={styles.infoItem}>
             <div className={styles.infoIcon}>📍</div>
-            <p>Rua dos Hambúrgueres, 123</p>
+            <p>550 FERRY ST, EVERETT</p>
           </div>
         </div>
       </div>
