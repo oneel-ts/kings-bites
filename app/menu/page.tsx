@@ -5,7 +5,6 @@ import styles from './menu-default.module.css';
 import {MenuItem} from "@/frontend/components/menuItem-default/MenuItem";
 import noodle from "../../public/assets/nodlee.jpg";
 import snacks from "../../public/assets/snacks.jpg";
-import burguer from "../../public/assets/burguer-combo.jpg";
 import chicken from "../../public/assets/chicken.jpeg";
 import fritas from "../../public/assets/fritasC.jpeg";
 import combo2 from "../../public/assets/Combo2.jpeg";

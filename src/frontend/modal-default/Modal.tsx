@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from "react";
+
 import styles from './modal.module.css';
 
 interface ModalProps {

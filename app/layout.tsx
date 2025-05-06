@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import styles from "./globals.module.css";
+import "./global.css";
 import Header from "@/frontend/components/header-default/Header";
 import Footer from "@/frontend/components/footer-default/Footer";
 
@@ -9,22 +9,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
-          <body className={styles.layoutContainer}>
-            
-              <Header/>
-              
-              <main className={`${styles.mainContent} ${styles.pageContainer}`}>
-                    {children}
-                    
-              </main>
-              <Footer/>
-          </body>
-      </html>
+    <html lang="en">
+      <body className="layoutContainer">
+        <Header />
+        <main className="mainContent pageContainer">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
   );
 }

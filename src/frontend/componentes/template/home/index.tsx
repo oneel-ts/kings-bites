@@ -7,7 +7,7 @@ export default function Home () {
         <Fragment>
             <section className={styles.homeSection}>
                 <h1 className={styles.homeTitle}>Welcome to King Bites</h1>
-                <p className={styles.homeSubtitle}><h2>At King Bites, every flavor is treated like royalty.</h2> </p>
+                <p className={styles.homeSubtitle}>At King Bites, every flavor is treated like royalty. </p>
                 <p>
                     Whether it’s a juicy burger, a crispy snack, or any other delight from our menu
                     
@@ -20,13 +20,13 @@ export default function Home () {
                     Make yourself at home, pick your favorite, and enjoy every bite.
                     </strong>        
                 </p>
-                <p>
+                
                     <h2>
                         <strong>
                         👑 King Bites. Where flavor is truly king.
                         </strong>
                     </h2>
-                </p>
+                
                 <img
                     src="/assets/frenteR.jpeg"
                     alt="Hambúrguer artesanal King Bites"

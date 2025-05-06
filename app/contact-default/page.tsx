@@ -1,57 +1,79 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './contact-default.module.css';
 
 export default function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+
+  // Inicializa a chave pública (uma vez)
+  useEffect(() => {
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
 
+    setIsSending(true);
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, message }),
-      });
+      const result = await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
 
-      if (res.ok) {
-        setStatus('Mensagem enviada com sucesso!');
-        setName('');
-        setEmail('');
-        setMessage('');
-      } else {
-        setStatus('Erro ao enviar a mensagem.');
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus('Erro ao enviar a mensagem.');
+      console.log('E-mail enviado:', result.status, result.text);
+      toast.success('Mensagem enviada com sucesso!', {
+        position: 'top-center',
+        autoClose: 3000,
+        onClose: () => formRef.current?.reset(),
+      });
+    } catch (error: any) {
+      console.error('Erro ao enviar e-mail:', error);
+      const msg = error?.text || error?.message || JSON.stringify(error);
+      toast.error(`Erro ao enviar a mensagem: ${msg}`, {
+        position: 'top-center',
+        autoClose: 5000,
+      });
+    } finally {
+      setIsSending(false);
     }
   };
 
   return (
     <section className={styles.contactSection}>
+      <ToastContainer />
       <div className={styles.contactContainer}>
         <h2 className={styles.contactTitle}>Contact Us</h2>
         <p className={styles.contactSubtitle}>
           Have any questions or suggestions? Send us a message and we will get back to you as soon as possible!
         </p>
 
-        <form className={styles.contactForm} onSubmit={handleSubmit}>
+        <form
+          ref={formRef}
+          className={styles.contactForm}
+          onSubmit={handleSubmit}
+        >
+          {/* Campo oculto para data/hora */}
+          <input
+            type="hidden"
+            name="time"
+            value={new Date().toLocaleString()}
+          />
+
           <div className={styles.formGroup}>
             <label htmlFor="name" className={styles.formLabel}>Your Name</label>
             <input
+              name="user_name"
               type="text"
               id="name"
               className={styles.formInput}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -59,11 +81,10 @@ export default function Contact() {
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.formLabel}>Your Email</label>
             <input
+              name="user_email"
               type="email"
               id="email"
               className={styles.formInput}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -71,17 +92,20 @@ export default function Contact() {
           <div className={styles.formGroup}>
             <label htmlFor="message" className={styles.formLabel}>Your Message</label>
             <textarea
+              name="message"
               id="message"
               className={styles.formTextarea}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
               required
             />
           </div>
 
-          <button type="submit" className={styles.submitButton}>Send Message</button>
-
-          {status && <p>{status}</p>}
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={isSending}
+          >
+            {isSending ? 'Enviando...' : 'Send Message'}
+          </button>
         </form>
       </div>
     </section>
