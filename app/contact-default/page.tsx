@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import styles from './contact-default.module.css';
 
 export default function Contact() {
@@ -21,7 +19,7 @@ export default function Contact() {
     if (!formRef.current) return;
 
     setIsSending(true);
-    setFeedback(null);
+    setFeedback(null); // Limpa o feedback anterior
 
     try {
       const result = await emailjs.sendForm(
@@ -48,7 +46,6 @@ export default function Contact() {
 
   return (
     <section className={styles.contactSection}>
-      <ToastContainer />
       <div className={styles.contactContainer}>
         <h2 className={styles.contactTitle}>Contact Us</h2>
         <p className={styles.contactSubtitle}>
