@@ -9,8 +9,9 @@ import styles from './contact-default.module.css';
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSending, setIsSending] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
 
-  // Inicializa a chave pública (apenas uma vez)
+  // Inicializa a chave pública apenas uma vez
   useEffect(() => {
     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
   }, []);
@@ -20,6 +21,8 @@ export default function Contact() {
     if (!formRef.current) return;
 
     setIsSending(true);
+    setFeedback(null);
+
     try {
       const result = await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -29,21 +32,15 @@ export default function Contact() {
       );
 
       console.log('E-mail enviado:', result.status, result.text);
-      toast.success('Mensagem enviada com sucesso!', {
-        position: 'top-center',
-        autoClose: 3000,
-        onClose: () => formRef.current?.reset(),
-      });
+      setFeedback({ type: 'success', message: 'Mensagem enviada com sucesso!' });
+      formRef.current.reset();
     } catch (error: unknown) {
       console.error('Erro ao enviar e-mail:', error);
       const message =
         error instanceof Error
           ? error.message
-          : JSON.stringify(error);
-      toast.error(`Erro ao enviar a mensagem: ${message}`, {
-        position: 'top-center',
-        autoClose: 5000,
-      });
+          : 'Ocorreu um erro inesperado.';
+      setFeedback({ type: 'error', message });
     } finally {
       setIsSending(false);
     }
@@ -110,6 +107,18 @@ export default function Contact() {
             {isSending ? 'Sending...' : 'Send Message'}
           </button>
         </form>
+
+        {feedback && (
+          <div
+            className={
+              feedback.type === 'success'
+                ? styles.successMessage
+                : styles.errorMessage
+            }
+          >
+            {feedback.message}
+          </div>
+        )}
       </div>
     </section>
   );
