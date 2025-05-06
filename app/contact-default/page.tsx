@@ -10,7 +10,7 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSending, setIsSending] = useState(false);
 
-  // Inicializa a chave pública (uma vez)
+  // Inicializa a chave pública (apenas uma vez)
   useEffect(() => {
     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
   }, []);
@@ -34,10 +34,13 @@ export default function Contact() {
         autoClose: 3000,
         onClose: () => formRef.current?.reset(),
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar e-mail:', error);
-      const msg = error?.text || error?.message || JSON.stringify(error);
-      toast.error(`Erro ao enviar a mensagem: ${msg}`, {
+      const message =
+        error instanceof Error
+          ? error.message
+          : JSON.stringify(error);
+      toast.error(`Erro ao enviar a mensagem: ${message}`, {
         position: 'top-center',
         autoClose: 5000,
       });
@@ -104,7 +107,7 @@ export default function Contact() {
             className={styles.submitButton}
             disabled={isSending}
           >
-            {isSending ? 'Enviando...' : 'Send Message'}
+            {isSending ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>
