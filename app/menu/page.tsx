@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import styles from './menu-default.module.css';
 import {MenuItem} from "@/frontend/components/menuItem-default/MenuItem";
-import noodle from "../../public/assets/nodlee.jpg";
-import snacks from "../../public/assets/snacks.jpg";
 import chicken from "../../public/assets/chicken.jpeg";
 import fritas from "../../public/assets/fritasC.jpeg";
 import combo2 from "../../public/assets/Combo2.jpeg";
@@ -24,20 +22,6 @@ import frango from "../../public/assets/frango.jpeg";
 import { Modal } from '@/frontend/modal-default/Modal'; // você vai criar esse componente de Modal que falamos
 
 const items = [
-  { 
-    name: "Griddle Noodles", 
-    price: "$17,99", 
-    description: "Com molho caseiro e queijo gratinado.", 
-    ProductImage: noodle,
-    link: "https://www.doordash.com/store/24952473?utm_source=mx_share" //adiciona o link aqui
-  },
-  { 
-    name: "Snacks", 
-    price: "$28,00", 
-    description: "Acompanha arroz, couve e farofa.", 
-    ProductImage: snacks,
-    link: "https://www.doordash.com/store/24952473?utm_source=mx_share"
-  },
   { 
     name: "Special Combo Two", 
     price: "$71,99", 

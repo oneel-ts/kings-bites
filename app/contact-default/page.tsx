@@ -9,9 +9,13 @@ export default function Contact() {
   const [isSending, setIsSending] = useState(false);
   const [feedback, setFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
 
-  // Inicializa a chave pública apenas uma vez
+  // Dados do EmailJS diretamente no código
+  const SERVICE_ID = 'service_bnortwq';
+  const TEMPLATE_ID = 'template_b2nesyr';
+  const PUBLIC_KEY = 'ZFVBMLkJL86IOMpNQ';
+
   useEffect(() => {
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+    emailjs.init(PUBLIC_KEY);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -19,14 +23,14 @@ export default function Contact() {
     if (!formRef.current) return;
 
     setIsSending(true);
-    setFeedback(null); // Limpa o feedback anterior
+    setFeedback(null);
 
     try {
       const result = await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        SERVICE_ID,
+        TEMPLATE_ID,
         formRef.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        PUBLIC_KEY
       );
 
       console.log('E-mail enviado:', result.status, result.text);
@@ -35,9 +39,7 @@ export default function Contact() {
     } catch (error: unknown) {
       console.error('Erro ao enviar e-mail:', error);
       const message =
-        error instanceof Error
-          ? error.message
-          : 'Ocorreu um erro inesperado.';
+        error instanceof Error ? error.message : 'Ocorreu um erro inesperado.';
       setFeedback({ type: 'error', message });
     } finally {
       setIsSending(false);
@@ -52,55 +54,25 @@ export default function Contact() {
           Have any questions or suggestions? Send us a message and we will get back to you as soon as possible!
         </p>
 
-        <form
-          ref={formRef}
-          className={styles.contactForm}
-          onSubmit={handleSubmit}
-        >
-          {/* Campo oculto para data/hora */}
-          <input
-            type="hidden"
-            name="time"
-            value={new Date().toLocaleString()}
-          />
+        <form ref={formRef} className={styles.contactForm} onSubmit={handleSubmit}>
+          <input type="hidden" name="time" value={new Date().toLocaleString()} />
 
           <div className={styles.formGroup}>
             <label htmlFor="name" className={styles.formLabel}>Your Name</label>
-            <input
-              name="user_name"
-              type="text"
-              id="name"
-              className={styles.formInput}
-              required
-            />
+            <input name="user_name" type="text" id="name" className={styles.formInput} required />
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.formLabel}>Your Email</label>
-            <input
-              name="user_email"
-              type="email"
-              id="email"
-              className={styles.formInput}
-              required
-            />
+            <input name="user_email" type="email" id="email" className={styles.formInput} required />
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="message" className={styles.formLabel}>Your Message</label>
-            <textarea
-              name="message"
-              id="message"
-              className={styles.formTextarea}
-              required
-            />
+            <textarea name="message" id="message" className={styles.formTextarea} required />
           </div>
 
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={isSending}
-          >
+          <button type="submit" className={styles.submitButton} disabled={isSending}>
             {isSending ? 'Sending...' : 'Send Message'}
           </button>
         </form>
@@ -108,9 +80,7 @@ export default function Contact() {
         {feedback && (
           <div
             className={
-              feedback.type === 'success'
-                ? styles.successMessage
-                : styles.errorMessage
+              feedback.type === 'success' ? styles.successMessage : styles.errorMessage
             }
           >
             {feedback.message}
