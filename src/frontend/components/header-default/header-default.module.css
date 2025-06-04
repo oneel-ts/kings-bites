@@ -1,85 +1,180 @@
-/* header-default.module.css */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .header {
   width: 100%;
-  background-color: #FFF8F0; /* Creme pastel */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra mais suave */
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.2);
   padding: 1rem 0;
-  border-bottom: 2px solid #FF9A8B; /* Vermelho pastel */
+  border-bottom: 3px solid #FF6B00;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeInDown 0.5s ease;
+  background-image: 
+    radial-gradient(circle at 10% 30%, rgba(255, 120, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 70%, rgba(255, 120, 0, 0.08) 0%, transparent 50%);
 }
 
 .navContainer {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
-  flex-wrap: wrap; /* Permite quebra de linha sem empilhar tudo */
+  padding: 0 5%;
+  flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #FF6B6B; /* Vermelho pastel mais vibrante */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
-  font-family: 'Comic Neue', cursive; /* Fonte descontraída */
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #FF6B00;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  font-family: 'Anton', sans-serif;
   margin-right: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF6B00, transparent);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  color: #ff8534;
 }
 
 .navLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap; /* Permite os itens se adaptarem sem empilhar */
+  flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.navItem {
+  position: relative;
 }
 
 .navItem a {
   text-decoration: none;
-  color: #5E503F; /* Marrom pastel */
-  font-weight: 600;
-  padding: 0.5rem 1rem;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.7rem 1.2rem;
   transition: all 0.3s ease;
-  border-radius: 20px; /* Bordas mais arredondadas */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  display: inline-block;
+  position: relative;
+  border-radius: 4px;
+}
+
+.navItem a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #FF6B00;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 10px;
 }
 
 .navItem a:hover {
-  color: #FFF8F0;
-  background-color: #FFB88C; /* Laranja pastel */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 155, 139, 0.2);
+  color: #FF6B00;
+  background-color: rgba(255, 107, 0, 0.07);
+}
+
+.navItem a:hover::before {
+  width: 70%;
 }
 
 /* Efeito para item ativo */
 .navItem a[aria-current="page"] {
-  color: #FFF8F0;
-  background-color: #FF9A8B; /* Vermelho pastel */
-  box-shadow: 0 4px 8px rgba(255, 154, 139, 0.3);
+  color: #FF6B00;
+  background-color: rgba(255, 107, 0, 0.1);
+}
+
+.navItem a[aria-current="page"]::before {
+  width: 70%;
+}
+
+/* Animação no hover */
+.navItem a:hover {
+  transform: translateY(-3px);
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .navContainer {
-    justify-content: center;
-    gap: 1rem;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
   }
 
   .logo {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
   }
 
   .navLinks {
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.5rem;
   }
 
   .navItem a {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navLinks {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navItem {
+    width: calc(50% - 0.5rem);
+    text-align: center;
+  }
+
+  .navItem a {
+    width: 100%;
+    padding: 0.6rem 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .navItem a:hover {
+    background-color: rgba(255, 107, 0, 0.15);
   }
 }

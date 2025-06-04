@@ -1,18 +1,62 @@
-import Link from 'next/link'
-import styles from "./header-default.module.css"
+"use client"
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from "./header-default.module.css";
+import { FaCrown } from 'react-icons/fa';
 
 export default function Header() {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.navContainer}>
-        <h1 className={styles.logo}>👑 King Bites</h1>
-        <ul className={styles.navLinks}>
-          <li className={styles.navItem}><Link href="/">Home</Link></li>
-          <li className={styles.navItem}><Link href="/menu">Menu</Link></li>
-          <li className={styles.navItem}><Link href="/about">Upon</Link></li>
-          <li className={styles.navItem}><Link href="/contact-default">Contact</Link></li>
-        </ul>
-      </nav>
-    </header>
-  )
+    const pathname = usePathname();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 20;
+            if (isScrolled !== scrolled) {
+                setScrolled(isScrolled);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [scrolled]);
+
+    const isActive = (path: string) => {
+        return pathname === path ? { 'aria-current': 'page' as const } : {};
+    };
+
+    return (
+        <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+            <nav className={styles.navContainer}>
+                <Link href="/" className={styles.logo}>
+                    <FaCrown style={{ marginRight: '8px', color: '#FF6B00' }} /> King Bites
+                </Link>
+                <ul className={styles.navLinks}>
+                    <li className={styles.navItem}>
+                        <Link href="/" {...isActive('/')}>
+                            Início
+                        </Link>
+                    </li>
+                    <li className={styles.navItem}>
+                        <Link href="/menu" {...isActive('/menu')}>
+                            Cardápio
+                        </Link>
+                    </li>
+                    <li className={styles.navItem}>
+                        <Link href="/about" {...isActive('/about')}>
+                            Sobre
+                        </Link>
+                    </li>
+                    <li className={styles.navItem}>
+                        <Link href="/contact-default" {...isActive('/contact-default')}>
+                            Contato
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    );
 }

@@ -1,80 +1,143 @@
-/* menuItem-default.module.css */
 .menuItem {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  background-color: #FFF8F0; /* Fundo creme pastel */
+  flex-direction: column;
+  background-color: #111111;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(255, 154, 139, 0.15); /* Sombra coral pastel */
+  overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #FFE8D6; /* Borda bege clarinha */
+  height: 380px;
+  position: relative;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .menuItem:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(255, 166, 140, 0.25);
-  background-color: #FFFDFA; /* Fundo mais claro no hover */
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+  border-color: #FF6B00;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.menuItem:hover .img {
+  transform: scale(1.05);
 }
 
 .textContainer {
+  padding: 1.25rem;
   flex: 1;
-  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .itemName {
-  font-size: 1.3rem;
-  color: #5E503F; /* Marrom pastel escuro */
+  font-size: 1.25rem;
+  color: #FF6B00;
   margin-bottom: 0.5rem;
-  font-family: 'Comic Neue', cursive;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .itemDescription {
-  color: #8B7D6B; /* Marrom pastel médio */
-  font-size: 0.95rem;
-  line-height: 1.5;
-  font-style: italic;
-}
-
-/* Adicione esta classe */
-.special {
-  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
-  border: 1px dashed #FF9A8B;
-  position: relative;
-}
-
-.special::after {
-  content: "🌟 Destaque";
-  position: absolute;
-  top: -10px;
-  right: 15px;
-  background: #FF9A8B;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 0.7rem;
-}
-
-.containerFood {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  gap: 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .itemPrice {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #FF9A8B; /* Coral pastel */
-  white-space: nowrap;
-  background-color: #FFF5F3; /* Fundo rosado */
-  padding: 0.4rem 0.8rem;
+  color: #ffffff;
+  background-color: #FF6B00;
+  padding: 0.3rem 0.8rem;
   border-radius: 20px;
-  box-shadow: inset 0 0 0 1px #FFD1C6; /* Borda interna sutil */
+  display: inline-block;
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
 }
-.img{
-  border-radius: 16px
+
+.special {
+  border: 2px solid #FF6B00;
+  position: relative;
+}
+
+.special::after {
+  content: "ESPECIAL";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #FF6B00;
+  color: #000000;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+/* Estilo base para ambos os botões */
+.orderButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: fit-content;
+  letter-spacing: 0.5px;
+}
+
+/* Estilo para o primeiro botão (laranja) */
+.orderButtonPrimary {
+  background: linear-gradient(135deg, #FF6B00, #FF8534);
+  color: #000000;
+  border: none;
+}
+
+/* Estilo para o segundo botão (cor contrastante com o banner) */
+.orderButtonSecondary {
+  background: linear-gradient(135deg, #00B2FF, #0089C7);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hover para ambos os botões */
+.orderButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Ícone do botão */
+.orderButtonIcon {
+  margin-right: 8px;
+  font-size: 1rem;
 }

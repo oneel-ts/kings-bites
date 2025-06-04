@@ -1,59 +1,189 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background: linear-gradient(to bottom, #1a1a1a, #000000);
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 107, 0, 0.3);
+}
+
+.modalHeader {
+  padding: 25px 30px 15px;
+  border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeaderContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
+  color: #FF6B00;
+  text-transform: uppercase;
+}
+
+.modalPrice {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FF6B00;
+}
+
+.modalImageContainer {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalBody {
+  padding: 25px 30px;
+}
+
+.modalDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.modalFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.modalFeature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.featureIcon {
+  color: #FF6B00;
+  font-size: 1.1rem;
+}
+
+.modalFooter {
+  padding: 20px 30px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.modalButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  gap: 8px;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6);
+  background: linear-gradient(135deg, #FF9500, #FF6B00);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.buttonIcon {
+  font-size: 1.2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 107, 0, 0.8);
+}
+
+@media (max-width: 768px) {
   .modal {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    animation: fadeIn 0.3s ease-in-out;
+    max-width: 95%;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .modalTitle {
+    font-size: 1.5rem;
   }
-  
-  .buttons {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+
+  .modalHeader, .modalBody, .modalFooter {
+    padding: 15px 20px;
   }
-  
-  .closeButton {
-    background-color: #ccc;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
+
+  .modalButton {
+    padding: 10px 18px;
+    font-size: 1rem;
   }
-  
-  .linkButton {
-    background-color: #ff5722;
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-  
+}

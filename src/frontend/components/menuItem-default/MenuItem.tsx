@@ -7,7 +7,7 @@ interface MenuItemProps {
     ProductImage: StaticImageData;
     price: string;
     isSpecial?: boolean;
-    onClick?: () => void; //  AQUI: adiciona o onClick
+    onClick?: () => void;
 }
 
 export function MenuItem({name, description, ProductImage, price, isSpecial = false, onClick}: MenuItemProps) {
@@ -18,12 +18,19 @@ export function MenuItem({name, description, ProductImage, price, isSpecial = fa
 
     return (
         <div className={menuItemClasses} onClick={onClick}>
+            <div className={styles.imageContainer}>
+                <Image 
+                    className={styles.img} 
+                    src={ProductImage} 
+                    alt={name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 300px"
+                    style={{objectFit: 'cover'}}
+                />
+            </div>
             <div className={styles.textContainer}>
                 <h2 className={styles.itemName}>{name}</h2>
                 <p className={styles.itemDescription}>{description}</p>
-            </div>
-            <div className={styles.containerFood}>
-                <Image className={styles.img} width={110} height={100} src={ProductImage} alt={name}/>
                 <span className={styles.itemPrice}>{price}</span>
             </div>
         </div>

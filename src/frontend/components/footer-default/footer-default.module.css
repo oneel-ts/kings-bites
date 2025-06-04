@@ -1,21 +1,44 @@
-/* footer-default.module.css */
 .footer {
-  background-color: #FFF8F0; /* Creme suave - substitui o cinza */
+  background-color: rgba(0, 0, 0, 0.9);
   text-align: center;
   font-size: 0.875rem;
   padding: 1.5rem 0;
-  margin-top: 2.5rem;
-  border-top: 1px solid #FFD166; /* Borda em amarelo mostarda pastel */
+  margin-top: auto; /* Isso empurra o footer para baixo */
+  border-top: 3px solid #FF6B00;
   width: 100%;
+  box-shadow: 0 -4px 20px rgba(255, 107, 0, 0.2);
+  background-image:
+          radial-gradient(circle at 10% 30%, rgba(255, 120, 0, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 90% 70%, rgba(255, 120, 0, 0.08) 0%, transparent 50%);
+  position: relative; /* Mudado de fixed para relative para não sobreposição */
+  z-index: 10;
 }
 
 .copyright {
   margin: 0;
-  color: #8B7D6B; /* Marrom pastel suave */
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
-/* Efeitos adicionais para harmonizar */
+.copyright:hover {
+  color: #FF6B00;
+}
+
 .footer:hover {
-  background-color: #F9F5FF; /* Transição suave para lilás claro */
+  background-color: rgba(0, 0, 0, 0.95);
   transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem 0;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
 }
