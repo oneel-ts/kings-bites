@@ -1,112 +1,52 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
+import { ReactNode, useEffect } from 'react';
 import styles from './modal.module.css';
-import { FaShoppingCart, FaTimes, FaArrowRight, FaCheck } from 'react-icons/fa';
-import Image from 'next/image';
+import { FaTimes, FaShoppingCart } from 'react-icons/fa';
 
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
     title: string;
     description: string;
+    children?: ReactNode;
     link: string;
-    price?: string;
-    ProductImage?: never;
 }
 
-export function Modal({ isOpen, onClose, title, description, link, price, ProductImage }: ModalProps) {
-    const scrollPosition = useRef(0);
-
+export function Modal({ isOpen, onClose, title, description, children, link }: ModalProps) {
     useEffect(() => {
-        if (isOpen) {
-            scrollPosition.current = window.pageYOffset;
-            
-            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-            document.body.style.paddingRight = `${scrollbarWidth}px`;
-            
-            document.body.style.overflow = 'hidden';
-            document.body.style.height = '100%';
-        } else {
-            document.body.style.overflow = '';
-            document.body.style.height = '';
-            document.body.style.paddingRight = '';
-        }
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && isOpen) {
+                onClose();
+            }
+        };
+
+        document.addEventListener('keydown', handleEscape);
 
         return () => {
-            document.body.style.overflow = '';
-            document.body.style.height = '';
-            document.body.style.paddingRight = '';
+            document.removeEventListener('keydown', handleEscape);
         };
-    }, [isOpen]);
-
-    const handleConfirmOrder = () => {
-        window.open(link, '_blank');
-        onClose();
-    };
+    }, [isOpen, onClose]);
 
     if (!isOpen) return null;
 
     return (
-        <div className={styles.overlay} onClick={onClose}>
-            <div
-                className={styles.modal}
-                onClick={(e) => e.stopPropagation()}
-            >
+        <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
                 <button className={styles.closeButton} onClick={onClose}>
                     <FaTimes />
                 </button>
-
-                <div className={styles.modalHeader}>
-                    <div className={styles.modalHeaderContent}>
-                        <h2 className={styles.modalTitle}>{title}</h2>
-                        {price && <div className={styles.modalPrice}>{price}</div>}
-                    </div>
-                </div>
-
-                {ProductImage && (
-                    <div className={styles.modalImageContainer}>
-                        <Image
-                            src={ProductImage}
-                            alt={title}
-                            className={styles.modalImage}
-                            width={300}
-                            height={200}
-                        />
-                    </div>
-                )}
-
-                <div className={styles.modalBody}>
-                    <p className={styles.modalDescription}>{description}</p>
-
-                    <div className={styles.modalFeatures}>
-                        <div className={styles.modalFeature}>
-                            <FaCheck className={styles.featureIcon} />
-                            <span>Ingredientes frescos</span>
-                        </div>
-                        <div className={styles.modalFeature}>
-                            <FaCheck className={styles.featureIcon} />
-                            <span>Sabor autêntico brasileiro</span>
-                        </div>
-                        <div className={styles.modalFeature}>
-                            <FaCheck className={styles.featureIcon} />
-                            <span>Preparado na hora</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.modalFooter}>
-                    <button className={`${styles.modalButton} ${styles.secondaryButton}`} onClick={onClose}>
-                        Cancelar
-                    </button>
-                    <button
-                        className={`${styles.modalButton} ${styles.primaryButton}`}
-                        onClick={handleConfirmOrder}
+                <h3 className={styles.modalTitle}>{title}</h3>
+                <p className={styles.modalDescription}>{description}</p>
+                <div className={styles.modalActions}>
+                    <a
+                        href={link}
+                        className={styles.orderButton}
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        <FaShoppingCart className={styles.buttonIcon} />
-                        Fazer Pedido <FaArrowRight className={styles.buttonIcon} />
-                    </button>
+                        <FaShoppingCart className={styles.buttonIcon} /> Fazer Pedido
+                    </a>
                 </div>
+                {children}
             </div>
         </div>
     );

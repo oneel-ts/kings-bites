@@ -5,13 +5,13 @@ import emailjs from '@emailjs/browser';
 import styles from './contact-default.module.css';
 import {
     FaPaperPlane, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope,
-    FaClock, FaInstagram, FaFacebookF, FaTwitter,
-    FaCheck, FaTimes, FaChevronDown, FaGlobe
+    FaClock, FaInstagram,
+    FaCheck, FaTimes, FaChevronDown,
 } from 'react-icons/fa';
 import { useLanguage } from "@/context";
 
 export default function Contact() {
-    const { translations, language } = useLanguage();
+    const { translations } = useLanguage();
     const formRef = useRef<HTMLFormElement>(null);
     const [isSending, setIsSending] = useState(false);
     const [feedback, setFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null);

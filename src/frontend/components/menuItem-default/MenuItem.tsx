@@ -1,35 +1,37 @@
-import styles from './menuItem-default.module.css';
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import styles from "./menuItem-default.module.css";
+import { StaticImageData } from 'next/image';
 
 interface MenuItemProps {
     name: string;
+    price: string;
     description: string;
     ProductImage: StaticImageData;
-    price: string;
-    isSpecial?: boolean;
-    onClick?: () => void;
+    link: string;
+    category: string;
+    onClick: () => void;
 }
 
-export function MenuItem({name, description, ProductImage, price, isSpecial = false, onClick}: MenuItemProps) {
-    const menuItemClasses = [
-        styles.menuItem,
-        isSpecial ? styles.special : ''
-    ].filter(Boolean).join(' ');
-
+export function MenuItem({
+                             name,
+                             price,
+                             description,
+                             ProductImage,
+                             onClick
+                         }: MenuItemProps) {
     return (
-        <div className={menuItemClasses} onClick={onClick}>
+        <div className={styles.menuItem} onClick={onClick}>
             <div className={styles.imageContainer}>
-                <Image 
-                    className={styles.img} 
-                    src={ProductImage} 
+                <Image
+                    src={ProductImage}
                     alt={name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 300px"
-                    style={{objectFit: 'cover'}}
+                    className={styles.img}
+                    layout="fill"
+                    objectFit="cover"
                 />
             </div>
             <div className={styles.textContainer}>
-                <h2 className={styles.itemName}>{name}</h2>
+                <h3 className={styles.itemName}>{name}</h3>
                 <p className={styles.itemDescription}>{description}</p>
                 <span className={styles.itemPrice}>{price}</span>
             </div>

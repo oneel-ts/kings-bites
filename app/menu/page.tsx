@@ -31,10 +31,28 @@ import 'swiper/css/effect-coverflow';
 
 import {Modal} from '@/frontend/modal-default/Modal';
 import { useLanguage } from "@/context";
+import { StaticImageData } from 'next/image';
+
+interface MenuItemType {
+    name: string;
+    price: string;
+    description: string;
+    ProductImage: StaticImageData;
+    link: string;
+    category: string;
+}
+
+interface TestimonialType {
+    rating: number;
+    text: string;
+    name: string;
+    location: string;
+    initial: string;
+}
 
 export default function MenuPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<any | null>(null);
+    const [selectedItem, setSelectedItem] = useState<MenuItemType | null>(null);
     const [activeCategory, setActiveCategory] = useState("todos");
     const { translations, language } = useLanguage();
 
@@ -44,7 +62,7 @@ export default function MenuPage() {
     const bebidasSectionRef = useRef<HTMLDivElement>(null);
 
     // Menu items com tradução dinâmica
-    const burgers = [
+    const burgers: MenuItemType[] = [
         {
             name: "X-chicken",
             price: "$13,99",
@@ -97,7 +115,7 @@ export default function MenuPage() {
         },
     ];
 
-    const combos = [
+    const combos: MenuItemType[] = [
         {
             name: language === 'pt-BR' ? "Combo Especial Dois" : "Special Combo Two",
             price: "$71,99",
@@ -140,7 +158,7 @@ export default function MenuPage() {
         }
     ];
 
-    const salgadinhos = [
+    const salgadinhos: MenuItemType[] = [
         {
             name: language === 'pt-BR' ? "Enroladinho de Salsicha" : "Little Sausage Roll",
             price: "$5,99",
@@ -173,7 +191,7 @@ export default function MenuPage() {
         }
     ];
 
-    const bebidas = [
+    const bebidas: MenuItemType[] = [
         {
             name: language === 'pt-BR' ? "Lata de Coca-Cola" : "Coke Can",
             price: "$2,99",
@@ -226,10 +244,7 @@ export default function MenuPage() {
         }
     ];
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const allItems = [...burgers, ...combos, ...salgadinhos, ...bebidas];
-
-    const openModal = (item: any) => {
+    const openModal = (item: MenuItemType) => {
         setSelectedItem(item);
         setIsModalOpen(true);
     };
@@ -244,7 +259,7 @@ export default function MenuPage() {
     };
 
     // Dados de testemunhos com tradução dinâmica
-    const testimonials = [
+    const testimonials: TestimonialType[] = [
         {
             rating: 5,
             text: language === 'pt-BR' ? 

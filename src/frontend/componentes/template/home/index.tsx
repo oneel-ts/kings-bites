@@ -95,7 +95,7 @@ export default function Home() {
                     </div>
                     <div className={styles.heroImageContainer}>
                         <div className={styles.heroImageWrapper}>
-                            <img
+                            <Image
                                 src="/assets/frenteR.jpeg"
                                 alt="Hambúrguer artesanal King Bites"
                                 className={styles.heroImage}
