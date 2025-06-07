@@ -8,8 +8,10 @@ import {
     FaClock, FaInstagram, FaFacebookF, FaTwitter,
     FaCheck, FaTimes, FaChevronDown, FaGlobe
 } from 'react-icons/fa';
+import { useLanguage } from "@/context";
 
 export default function Contact() {
+    const { translations, language } = useLanguage();
     const formRef = useRef<HTMLFormElement>(null);
     const [isSending, setIsSending] = useState(false);
     const [feedback, setFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
@@ -112,7 +114,7 @@ export default function Contact() {
 
                 setFeedback({
                     type: 'success',
-                    message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.'
+                    message: translations['mensagem_sucesso']
                 });
 
                 setTimeout(() => {
@@ -124,7 +126,7 @@ export default function Contact() {
 
                 setFeedback({
                     type: 'error',
-                    message: 'Não foi possível enviar sua mensagem. Por favor, tente novamente mais tarde.'
+                    message: translations['mensagem_erro']
                 });
             } finally {
                 setIsSending(false);
@@ -142,28 +144,28 @@ export default function Contact() {
 
     const faqItems = [
         {
-            question: "Qual é o horário de funcionamento do King Bites?",
-            answer: "Estamos abertos de segunda a sábado, das 11h às 22h, e aos domingos das 12h às 20h."
+            question: translations['faq1_pergunta'],
+            answer: translations['faq1_resposta']
         },
         {
-            question: "Vocês oferecem opções vegetarianas?",
-            answer: "Sim! Temos várias opções vegetarianas no nosso cardápio, incluindo lanches à base de plantas e salgadinhos de queijo."
+            question: translations['faq2_pergunta'],
+            answer: translations['faq2_resposta']
         },
         {
-            question: "Posso fazer pedidos para eventos?",
-            answer: "Absolutamente! Oferecemos serviços de catering para eventos de todos os tamanhos. Entre em contato conosco com pelo menos 48 horas de antecedência para discutirmos as opções."
+            question: translations['faq3_pergunta'],
+            answer: translations['faq3_resposta']
         },
         {
-            question: "Vocês fazem entregas?",
-            answer: "Sim, realizamos entregas através do DoorDash e também oferecemos a opção de retirada no local."
+            question: translations['faq4_pergunta'],
+            answer: translations['faq4_resposta']
         },
         {
-            question: "Os ingredientes são importados do Brasil?",
-            answer: "Utilizamos uma combinação de ingredientes importados do Brasil e ingredientes locais de alta qualidade para criar a autêntica experiência brasileira."
+            question: translations['faq5_pergunta'],
+            answer: translations['faq5_resposta']
         },
         {
-            question: "Qual é o lanche mais popular?",
-            answer: "Nosso X-Tudo Burger é o favorito dos clientes! É um hambúrguer completo com ingredientes autênticos brasileiros."
+            question: translations['faq6_pergunta'],
+            answer: translations['faq6_resposta']
         }
     ];
 
@@ -173,14 +175,14 @@ export default function Contact() {
 
             <div className={styles.contactContainer}>
                 <div className={styles.contactHeader}>
-                    <h2 className={styles.contactTitle}>FALE CONOSCO</h2>
+                    <h2 className={styles.contactTitle}>{translations['fale_conosco']}</h2>
                     <p className={styles.contactSubtitle}>
-                        Tem alguma dúvida ou sugestão? Envie uma mensagem e retornaremos o mais breve possível!
+                        {translations['contato_subtitulo']}
                     </p>
                 </div>
 
                 <div className={styles.contactInfoPanel}>
-                    <h3 className={styles.infoTitle}>Informações de Contato</h3>
+                    <h3 className={styles.infoTitle}>{translations['info_contato']}</h3>
 
                     <div className={styles.contactInfoList}>
                         <div className={styles.infoItem}>
@@ -188,8 +190,8 @@ export default function Contact() {
                                 <FaMapMarkerAlt className={styles.infoIcon} />
                             </div>
                             <div className={styles.infoContent}>
-                                <span className={styles.infoLabel}>Endereço</span>
-                                <p className={styles.infoValue}>123 Main Street, Orlando, FL</p>
+                                <span className={styles.infoLabel}>{translations['endereco']}</span>
+                                <p className={styles.infoValue}>{translations['endereco_valor']}</p>
                             </div>
                         </div>
 
@@ -198,8 +200,8 @@ export default function Contact() {
                                 <FaPhoneAlt className={styles.infoIcon} />
                             </div>
                             <div className={styles.infoContent}>
-                                <span className={styles.infoLabel}>Telefone</span>
-                                <p className={styles.infoValue}>+1 (555) 123-4567</p>
+                                <span className={styles.infoLabel}>{translations['telefone']}</span>
+                                <p className={styles.infoValue}>{translations['telefone_valor']}</p>
                             </div>
                         </div>
 
@@ -208,8 +210,8 @@ export default function Contact() {
                                 <FaEnvelope className={styles.infoIcon} />
                             </div>
                             <div className={styles.infoContent}>
-                                <span className={styles.infoLabel}>E-mail</span>
-                                <p className={styles.infoValue}>contato@kingbites.com</p>
+                                <span className={styles.infoLabel}>{translations['email']}</span>
+                                <p className={styles.infoValue}>{translations['email_valor']}</p>
                             </div>
                         </div>
 
@@ -218,10 +220,10 @@ export default function Contact() {
                                 <FaClock className={styles.infoIcon} />
                             </div>
                             <div className={styles.infoContent}>
-                                <span className={styles.infoLabel}>Horário de Funcionamento</span>
+                                <span className={styles.infoLabel}>{translations['horario_funcionamento']}</span>
                                 <p className={styles.infoValue}>
-                                    Seg-Sáb: 11h às 22h<br />
-                                    Dom: 12h às 20h
+                                    {translations['horario_dias_semana']}<br />
+                                    {translations['horario_fim_semana']}
                                 </p>
                             </div>
                         </div>
@@ -229,39 +231,39 @@ export default function Contact() {
 
                     <div className={styles.divider}></div>
 
-                    <h3 className={styles.infoTitle}>Redes Sociais</h3>
+                    <h3 className={styles.infoTitle}>{translations['redes_sociais']}</h3>
                     <div className={styles.socialLinks}>
                         <a href="https://instagram.com/kingbites2023" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                             <FaInstagram />
                         </a>
-                        <a href="#" className={styles.socialLink}>
-                            <FaFacebookF />
-                        </a>
-                        <a href="#" className={styles.socialLink}>
-                            <FaTwitter />
-                        </a>
-                        <a href="#" className={styles.socialLink}>
-                            <FaGlobe />
-                        </a>
+                        {/*<a href="#" className={styles.socialLink}>*/}
+                        {/*    <FaFacebookF />*/}
+                        {/*</a>*/}
+                        {/*<a href="#" className={styles.socialLink}>*/}
+                        {/*    <FaTwitter />*/}
+                        {/*</a>*/}
+                        {/*<a href="#" className={styles.socialLink}>*/}
+                        {/*    <FaGlobe />*/}
+                        {/*</a>*/}
                     </div>
 
                     <div className={styles.mapContainer}>
                         <img
                             src="/assets/map-placeholder.jpg"
-                            alt="Localização do King Bites"
+                            alt={translations['localizacao_mapa']}
                             className={styles.map}
                         />
                     </div>
                 </div>
 
                 <div className={styles.contactForm}>
-                    <h3 className={styles.formTitle}>ENVIE UMA MENSAGEM</h3>
+                    <h3 className={styles.formTitle}>{translations['envie_mensagem']}</h3>
 
                     <form ref={formRef} onSubmit={handleSubmit}>
                         <input type="hidden" name="time" value={new Date().toLocaleString()} />
 
                         <div className={styles.formGroup}>
-                            <label htmlFor="name" className={styles.formLabel}>Seu Nome</label>
+                            <label htmlFor="name" className={styles.formLabel}>{translations['seu_nome']}</label>
                             <div className={styles.inputWrapper}>
                                 <input
                                     name="user_name"
@@ -271,7 +273,7 @@ export default function Contact() {
                                     required
                                     onChange={handleInputChange}
                                     value={formData.user_name}
-                                    placeholder="Digite seu nome completo"
+                                    placeholder={translations['nome_placeholder']}
                                 />
                                 <div className={styles.inputFocus}></div>
                                 <div className={styles.highlightBox}></div>
@@ -279,7 +281,7 @@ export default function Contact() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label htmlFor="email" className={styles.formLabel}>Seu Email</label>
+                            <label htmlFor="email" className={styles.formLabel}>{translations['seu_email']}</label>
                             <div className={styles.inputWrapper}>
                                 <input
                                     name="user_email"
@@ -289,7 +291,7 @@ export default function Contact() {
                                     required
                                     onChange={handleInputChange}
                                     value={formData.user_email}
-                                    placeholder="exemplo@email.com"
+                                    placeholder={translations['email_placeholder']}
                                 />
                                 <div className={styles.inputFocus}></div>
                                 <div className={styles.highlightBox}></div>
@@ -297,7 +299,7 @@ export default function Contact() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label htmlFor="message" className={styles.formLabel}>Sua Mensagem</label>
+                            <label htmlFor="message" className={styles.formLabel}>{translations['sua_mensagem']}</label>
                             <div className={styles.inputWrapper}>
                                 <textarea
                                     name="message"
@@ -306,7 +308,7 @@ export default function Contact() {
                                     required
                                     onChange={handleInputChange}
                                     value={formData.message}
-                                    placeholder="Como podemos ajudar? Escreva sua mensagem aqui..."
+                                    placeholder={translations['mensagem_placeholder']}
                                 />
                                 <div className={styles.inputFocus}></div>
                                 <div className={styles.highlightBox}></div>
@@ -315,7 +317,7 @@ export default function Contact() {
 
                         <button type="submit" className={styles.submitButton} disabled={isSending || !isButtonEnabled}>
                             <FaPaperPlane className={styles.buttonIcon} />
-                            {isSending ? 'Enviando...' : 'Enviar Mensagem'}
+                            {isSending ? translations['enviando'] : translations['enviar_mensagem']}
                         </button>
                     </form>
 
@@ -333,7 +335,7 @@ export default function Contact() {
                 </div>
 
                 <div className={styles.faqSection}>
-                    <h3 className={styles.faqTitle}>PERGUNTAS FREQUENTES</h3>
+                    <h3 className={styles.faqTitle}>{translations['perguntas_frequentes']}</h3>
 
                     <div className={styles.faqList}>
                         {faqItems.map((item, index) => (

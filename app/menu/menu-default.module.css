@@ -671,3 +671,71 @@
     font-size: 2rem;
   }
 }
+
+/* Garantir que os botões de categoria mantenham um tamanho consistente */
+.categoryButton {
+  min-width: 100px; /* Largura mínima para cada botão */
+  white-space: nowrap; /* Evitar quebra de linha */
+  padding: 0.8rem 1rem; /* Padding padrão */
+  font-size: 0.9rem; /* Tamanho de fonte padronizado */
+}
+
+/* Garantir tamanhos consistentes para elementos de texto */
+.categoryTitle, .menuTitle, .specialOfferTitle, .ctaTitle {
+  min-height: 2em; /* Altura mínima para evitar mudanças de layout */
+}
+
+.categoryDescription, .specialOfferDescription, .ctaText {
+  min-height: 4em; /* Altura mínima para descrições */
+}
+
+/* Garantir que os botões de pedido tenham tamanho consistente */
+.orderButton, .orderButtonPrimary, .orderButtonSecondary {
+  min-width: 150px;
+  max-width: 250px;
+  width: auto;
+  padding: 0.8rem 1.5rem;
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsividade para os botões de categoria */
+@media (max-width: 768px) {
+  .categoriesNav {
+    display: flex;
+    flex-wrap: nowrap; /* Evitar quebra de botões para nova linha */
+    overflow-x: auto; /* Permitir rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* Rolagem suave em dispositivos iOS */
+    padding: 10px 0; /* Espaçamento vertical */
+    gap: 5px; /* Espaçamento reduzido entre os botões */
+  }
+
+  .categoryButton {
+    min-width: auto; /* Permitir que o botão se adapte ao conteúdo */
+    padding: 0.6rem 0.8rem; /* Reduzir padding */
+    font-size: 0.8rem; /* Reduzir tamanho da fonte */
+    flex: 0 0 auto; /* Não permitir crescimento ou encolhimento */
+  }
+
+  .orderButton, .orderButtonPrimary, .orderButtonSecondary {
+    min-width: 120px;
+    max-width: 200px;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+  .categoryButton {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .orderButton, .orderButtonPrimary, .orderButtonSecondary {
+    min-width: 100px;
+    padding: 0.6rem 0.8rem;
+  }
+}
